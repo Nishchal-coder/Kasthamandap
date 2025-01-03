@@ -18,6 +18,14 @@ body {
   padding: 10px 20px;
   height: 90px;
 }
+.content h6{
+  text-align: center;
+}
+.login-link{
+  text-align: right;
+  margin-top: 10px;
+  text-decoration: none;
+}
 
 .flex-container {
   display: flex;
@@ -28,10 +36,12 @@ body {
 .logo p {
   font-size: 28px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 6px;
   color: #333;
   margin: 0;
-}
+  font-family: cursive;
+  color: #333;
+  }
 
 .search-bar {
   display: flex;
@@ -40,32 +50,55 @@ body {
   max-width: 350px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  padding: 5px;
+  padding: 8px 10px;
   position: relative;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.search-bar:hover {
+  border-color: #888; /* Subtle hover effect */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.search-bar:focus-within {
+  border-color: #007bff; /* Highlight color for focus */
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }
 
 .search-bar input {
+  flex: 1;
   border: none;
   outline: none;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.search-bar i {
-  font-size: 18px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: inherit;
   color: #333;
-  position: absolute;
-  right: 10px;
-  transition: transform 0.3s;
 }
 
-.search-bar:hover i {
-  transform: scale(1.2);
+.search-bar input::placeholder {
+  color: #aaa; /* Subtle placeholder color */
+  font-style: italic;
 }
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 16px;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.search-bar button:hover {
+  color: #007bff; /* Button hover effect */
+}
+
+
+
+
 
 .icon {
   display: flex;
@@ -99,7 +132,7 @@ body {
 .icon i:hover {
   transform: scale(1.2);
 }
-
+  
 .top {
   background-color: #102c2c;
   display: flex;
@@ -110,7 +143,7 @@ body {
 }
 
 .top a {
-  color: #4caf50;
+  color: #4CAF50;
   text-decoration: none;
   font-size: 16px;
   margin: 0 15px;
@@ -177,7 +210,6 @@ body {
   font-size: 16px;
   color: #333;
   margin: 5px 0;
-  text-align: center;
 }
 
 .content ul {
@@ -207,7 +239,9 @@ body {
   border-radius: 0 0 10px 10px;
   transition: background-color 0.3s, transform 0.3s;
 }
-
+.con{
+  display: flex;
+}
 .content button:hover {
   background: #ff851b;
   transform: translateY(-2px);
@@ -244,90 +278,59 @@ body {
   font-size: 14px;
   margin-top: 10px;
 }
-.foot {
+.foot{
   background-color: #333;
   color: #eee;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (max-width: 1024px) {
-  .flex-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .search-bar {
+@media (max-width: 1200px) {
+  .registration-container, .login-container {
     width: 80%;
-    margin-top: 10px;
-  }
-
-  .icon {
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .content {
-    width: 48%;
-  }
-
-  .top a {
-    font-size: 16px;
-    padding: 8px 10px;
   }
 }
 
 @media (max-width: 768px) {
+  .registration-container, .login-container {
+    width: 90%;
+  }
+
   .flex-container {
     flex-direction: column;
-    text-align: center;
+    align-items: flex-start;
   }
 
   .search-bar {
+    width: 100%;
     margin-top: 10px;
-    width: 90%;
-  }
-
-  .icon {
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .content {
-    width: 90%;
-    margin-bottom: 20px;
-  }
-
-  .top a {
-    padding: 10px 10px;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo p {
-    font-size: 22px;
-  }
-
-  .search-bar input {
-    font-size: 14px;
   }
 
   .content {
     width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 20px;
   }
 
-  .top a {
-    font-size: 14px;
-    padding: 8px;
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  button {
+    padding: 10px;
+  }
+
+  .footer {
+    font-size: 12px;
   }
 
   .footernav {
     flex-direction: column;
     gap: 10px;
   }
-
-  .footerbottom {
-    font-size: 12px;
-  }
 }
+

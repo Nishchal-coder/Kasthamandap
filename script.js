@@ -1,34 +1,39 @@
-// Chat GPT
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("a");
-  searchInput.addEventListener("input", function () {
-    let searchQuery = this.value.toLowerCase();
-    let products = document.querySelectorAll(".content");
-    let noResults = true;
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.querySelector(".search-bar input"); // Search input field
+  const products = document.querySelectorAll(".content"); // Product containers
+  const productContainer = document.querySelector(".content1"); // Parent container for products
 
-    products.forEach((product) => {
-      let productName = product.querySelector("p").textContent.toLowerCase();
-      if (productName.includes(searchQuery)) {
-        product.style.display = "block";
-        noResults = false;
+  // Create a message element for "Item not available"
+  const noResultsMessage = document.createElement("p");
+  noResultsMessage.textContent = "Item is not in stock right now.";
+  noResultsMessage.style.textAlign = "center";
+  noResultsMessage.style.fontSize = "18px";
+  noResultsMessage.style.color = "red";
+  noResultsMessage.style.display = "none";
+  productContainer.appendChild(noResultsMessage);
+
+  // Add event listener to the search input
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase().trim(); // Get user input in lowercase
+    let found = false; // Track if any product matches
+
+    // Loop through all products and check for matches
+    products.forEach(product => {
+      const productName = product.querySelector("p").textContent.toLowerCase(); // Product name
+
+      if (productName.includes(query)) {
+        product.style.display = "block"; // Show matching product
+        found = true;
       } else {
-        product.style.display = "none";
+        product.style.display = "none"; // Hide non-matching product
       }
     });
 
-    const noResultsMessage = document.getElementById("no-results-message");
-    if (noResults && searchQuery !== "") {
-      if (!noResultsMessage) {
-        let message = document.createElement("div");
-        message.id = "no-results-message";
-        message.textContent = "Item not available";
-        document.querySelector(".content1").appendChild(message);
-      }
-    } else if (!noResults) {
-      if (noResultsMessage) {
-        noResultsMessage.remove();
-      }
+    // Show or hide "Item not available" message
+    if (found || query === "") {
+      noResultsMessage.style.display = "none";
+    } else {
+      noResultsMessage.style.display = "block";
     }
   });
 });
-
